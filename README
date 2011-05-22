@@ -1,0 +1,25 @@
+A simple key-value store built in Opa.
+
+Keys and values are stored as strings.
+
+Public API:
+* POST some_key   => adds [(some_key, body)] to the storage.
+* GET  some_key   => if [(some_key, some_body)] appears in the storage, return [some_body] as text/plain, otherwise 404 (Not found)
+* DELETE some_key => if [(some_key, some_body)] appears in the storage, delete it, otherwise ignored
+* everything else => 405 (Method not allowed)
+
+
+BUILDING
+ make
+
+LAUNCHING
+On one server:
+ ./opa_storage.exe
+(launches on port 8080)
+
+or
+ ./opa_storage.exe --server-port nnnn
+
+On many servers:
+  opa-cloud opa-storage.exe --host localhost --host me@my_second_server --host me@my_third_server
+
